@@ -6156,6 +6156,7 @@ def apply_and_enforce(*args, **kwargs):
             except:
                 print("caught except in utils")
                 import traceback
+                import sys
                 traceback.print_stack(file=sys.stdout)
                 df = df[meta.columns.to_list()]
 
