@@ -393,7 +393,13 @@ def check_meta(x, meta, funcname=None, numeric_equal=True):
                 asciitable(["Column", "Found", "Expected"], bad_dtypes),
             )
         else:
-            check_matching_columns(meta, x)
+            try:
+                check_matching_columns(meta, x)
+            except:
+                print("caught except in utils")
+                import traceback
+                print(traceback.print_tb())
+                return x[meta.columns.to_list()]
             return x
     else:
         if equal_dtypes(x.dtype, meta.dtype):
