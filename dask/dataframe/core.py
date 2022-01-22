@@ -6150,7 +6150,15 @@ def apply_and_enforce(*args, **kwargs):
         if not len(df):
             return meta
         if is_dataframe_like(df):
-            check_matching_columns(meta, df)
+            #check_matching_columns(meta, df)
+            try:
+                check_matching_columns(meta, df)
+            except:
+                print("caught except in utils")
+                import traceback
+                print(traceback.print_tb())
+                df = df[meta.columns.to_list()]
+
             c = meta.columns
         else:
             c = meta.name
