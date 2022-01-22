@@ -398,7 +398,7 @@ def check_meta(x, meta, funcname=None, numeric_equal=True):
             except:
                 print("caught except in utils")
                 import traceback
-                print(traceback.print_tb())
+                traceback.print_stack(file=sys.stdout)
                 return x[meta.columns.to_list()]
             return x
     else:
